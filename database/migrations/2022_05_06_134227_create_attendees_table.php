@@ -16,12 +16,11 @@ class CreateAttendeesTable extends Migration
         Schema::create('attendees', function (Blueprint $table) {
             $table->id('Id');
             $table->string('Fullname',100);
-            $table->string('NidPp',50);
+            $table->string('NidPp',20);
             $table->dateTime('Birthdate');
-            $table->integer('ContactNumber'); //validate the length(7) of this column in code 
+            $table->string('ContactNumber'); 
             $table->string('Email',100);
             $table->bigInteger('EducationId')->unsigned();;
-            $table->uuid('PaymentSlipName')->default(DB::raw('(UUID())'));
 
             $table->unique('Email', 'AK_Users_Email');
             $table->foreign('EducationId', 'FK_Attendee_EducationLevels')->references('Id')->on('education_levels');

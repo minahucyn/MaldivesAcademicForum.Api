@@ -17,7 +17,8 @@ class CreateRegistrationsTable extends Migration
             $table->id('Id');
             $table->bigInteger('AttendeeId')->unsigned();;
             $table->bigInteger('ConferenceId')->unsigned();;
-            $table->tinyInteger('IsApproved')->default(0); //0 NOT APPROVED/REJECTED | -1 REJECTED | 1 APPROVED
+            $table->uuid('PaymentSlipName')->default(DB::raw('(UUID())'));
+            $table->tinyInteger('IsApproved')->default(0); //0 REVIEW REQUESTED | -1 REJECTED | 1 APPROVED
             
             $table->foreign('AttendeeId', 'FK_Registrations_Attendee')->references('Id')->on('attendees');
             $table->foreign('ConferenceId', 'FK_Registrations_Conference')->references('Id')->on('conferences');

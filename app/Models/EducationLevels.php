@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class EducationLevels extends Model
 {
     //
+    public $timestamps = false;
+
 }

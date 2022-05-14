@@ -3,17 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    
+    public function register(Request $request){
+        $fields = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|unique:users,email',
+            'password' => 'required|string|confirmed'
+        ]);
+
+        $user = User::create([
+            'name'=> $fields['name'],
+            'email'=> $fields['email'],
+            'password'=> bcrypt($fields['password'])
+        ]);
+
+        $token = $user->createToken('apptoken')->plainTextToken;
+        $reponse = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($reponse,201);
     }
 
     /**
@@ -49,39 +64,5 @@ class UserController extends Controller
             'Details'=> 'The email and password does not match.'
         ];
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

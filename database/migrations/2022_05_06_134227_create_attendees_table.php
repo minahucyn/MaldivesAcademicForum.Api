@@ -22,7 +22,8 @@ class CreateAttendeesTable extends Migration
             $table->string('Email',100);
             $table->bigInteger('EducationId')->unsigned();;
 
-            $table->unique('Email', 'AK_Users_Email');
+            $table->unique('Email', 'AK_Attendees_Email');
+            $table->unique('NidPp', 'AK_Attendees_NidPp');
             $table->foreign('EducationId', 'FK_Attendee_EducationLevels')->references('Id')->on('education_levels');
         });
     }

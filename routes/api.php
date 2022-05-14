@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\AttendeeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 use App\Models\Attendee;
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('attendee/registration', [AttendeeController::class, 'registration']);
+
+Route::post('User/login', [UserController::class, 'login']);

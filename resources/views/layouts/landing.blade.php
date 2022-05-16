@@ -49,23 +49,23 @@
         </button>
 
         <div class="collapse navbar-collapse" id="app-navbar">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
+              <a class="nav-link" aria-current="page" href="/" id="home">
                 Home
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Speakers</a>
+              <a class="nav-link" href="/speakers" id="speakers">Speakers</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sponsors</a>
+              <a class="nav-link" href="/sponsors" id="sponsors">Sponsors</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">FAQs</a>
+              <a class="nav-link" href="/faq" id="faqs">FAQs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="/about" id="about">About</a>
             </li>
           </ul>
         </div>
@@ -75,24 +75,25 @@
 
   @yield('content')
 
-  <div class="container">
-    <footer class="footer mt-auto py-3 bg-light">
+  <footer class="footer mt-auto py-3 bg-dark text-secondary">
+    <div class="container">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Speakers</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Sponsors</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+        <li class="nav-item"><a href="/" class="nav-link px-2 text-white">Home</a></li>
+        <li class="nav-item"><a href="/speakers" class="nav-link px-2 text-white">Speakers</a></li>
+        <li class="nav-item"><a href="/sponsors" class="nav-link px-2 text-white">Sponsors</a></li>
+        <li class="nav-item"><a href="/faq" class="nav-link px-2 text-white">FAQs</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About</a></li>
       </ul>
-      <p class="text-center text-muted">All Rights Reserved © {{ now()->year }} Maldives Academic Forum</p>
-    </footer>
-  </div>
+      <p class="text-center text-white">All Rights Reserved © {{ now()->year }} Maldives Academic Forum</p>
+    </div>
+  </footer>
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/public/js/app.js"></script>
 
   @yield('scripts')
 

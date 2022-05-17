@@ -8,8 +8,8 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $fields = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
@@ -17,9 +17,9 @@ class UserController extends Controller
         ]);
 
         $user = User::create([
-            'name'=> $fields['name'],
-            'email'=> $fields['email'],
-            'password'=> bcrypt($fields['password'])
+            'name' => $fields['name'],
+            'email' => $fields['email'],
+            'password' => bcrypt($fields['password'])
         ]);
 
         $token = $user->createToken('apptoken')->plainTextToken;
@@ -28,7 +28,7 @@ class UserController extends Controller
             'token' => $token
         ];
 
-        return response($reponse,201);
+        return response($reponse, 201);
     }
 
     /**
@@ -46,9 +46,8 @@ class UserController extends Controller
 
         $user = User::where('email', '=', $fields['email'])->first();
 
-        if($user != null)
-        {
-            if ( Hash::check($fields['password'], $user -> password)) {
+        if ($user != null) {
+            if (Hash::check($fields['password'], $user->password)) {
 
                 $token = $user->createToken('apptoken')->plainTextToken;
 
@@ -60,9 +59,8 @@ class UserController extends Controller
         }
 
         return [
-            'Error'=> 'Authentication failed!',
-            'Details'=> 'The email and password does not match.'
+            'Error' => 'Authentication failed!',
+            'Details' => 'The email and password does not match.'
         ];
-
     }
 }

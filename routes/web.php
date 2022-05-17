@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\PagesController;
+use  App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use  App\Http\Controllers\PagesController;
 |
 */
 
+//site pages
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/speakers', [PagesController::class, 'speakers']);
 Route::get('/sponsors', [PagesController::class, 'sponsors']);
@@ -21,23 +23,10 @@ Route::get('/faq', [PagesController::class, 'faq']);
 Route::get('/about', [PagesController::class, 'about']);
 
 
+//attendee conference registration
+Route::post('/register', [AttendeeController::class, 'registration']);
 
-// Route::get('/', function () {
-//   return view('index');
-// });
 
-// Route::get('/speakers', function () {
-//   return view('speakers');
-// });
 
-// Route::get('/sponsors', function () {
-//   return view('sponsors');
-// });
-
-// Route::get('/faq', function () {
-//   return view('faq');
-// });
-
-// Route::get('/about', function () {
-//   return view('about');
-// });
+//administrator login
+Route::get('/login', [UserController::class, 'login']);

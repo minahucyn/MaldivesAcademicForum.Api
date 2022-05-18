@@ -29,6 +29,7 @@
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
         <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#register">Register</a>
         <a class="btn btn-outline-primary btn-lg px-4 me-sm-3" href="/login">Login</a>
+        <a class="btn btn-outline-danger btn-lg px-4 me-sm-3" href="/admin/education-levels">Levels</a>
       </div>
     </div>
   </div>
@@ -80,51 +81,59 @@
         <p class="fs-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, illo nostrum vel similique quisquam commodi.</p>
       </div>
       <div class="col-md-7 mx-auto col-lg-5">
-        <form class="p-1 p-md-5 border rounded-3 bg-light" action="/register" method="post">
+        <form action="/register" method="post" class="p-1 p-md-5 border rounded-3 bg-light">
           @csrf
+          <input type="hidden" name="">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" placeholder="Full name" aria-label="Full name" name="fullname" id="fullname" required>
-            <label for="fullname">Full name</label>
-            @error('fullname')
+            <input type="text" class="form-control" placeholder="Full name" aria-label="Full name" name="Fullname" id="Fullname" value="{{ old('Fullname') }}" required>
+            <label for="Fullname">Full name</label>
+            @error('Fullname')
             <p class="text-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" placeholder="NID / PP" aria-label="NID / PP" name="nidpp" id="nidpp" required>
-            <label for="nidpp">NID / PP</label>
-            @error('nidpp')
+            <input type="text" class="form-control" placeholder="NID / PP" aria-label="NID / PP" name="NidPp" id="NidPp" value="{{ old('NidPp') }}" required>
+            <label for="NidPp">NID / PP</label>
+            @error('NidPp')
             <p class="text-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="form-floating mb-3">
-            <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" required>
-            <label for="dateofbirth">Date of Birth</label>
-            @error('dateofbirth')
+            <input type="date" class="form-control" id="Birthdate" name="Birthdate" value="{{ old('Birthdate') }}" required>
+            <label for="Birthdate">Date of Birth</label>
+            @error('Birthdate')
             <p class="text-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="contact_number" name="contact_number" placeholder="contact number" pattern="[79][0-9]{6}" required>
-            <label for="contact_number">Contact Number</label>
-            @error('contact_number')
+            <input type="text" class="form-control" id="ContactNumber" name="ContactNumber" placeholder="contact number" value="{{ old('ContactNumber') }}" required>
+            <label for="ContactNumber">Contact Number</label>
+            @error('ContactNumber')
             <p class="text-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email_address" name="email_address" placeholder="john@doe.com" required>
-            <label for="email_address">Email address</label>
-            @error('email_address')
+            <input type="email" class="form-control" id="Email" name="Email" placeholder="john@doe.com" value="{{ old('Email') }}" required>
+            <label for="Email">Email address</label>
+            @error('Email')
             <p class="text-danger">{{ $message }}</p>
             @enderror
           </div>
           <div class="form-floating mb-3">
-            <select name="education_level" id="education_level" class="form-select" aria-label="Education Level" required>
+            <select name="EducationId" id="EducationId" class="form-select" aria-label="Education Level" value="{{ old('EducationId') }}" required>
               @foreach($educationIds as $educationId)
               <option value="{{$educationId->Id}}">{{ $educationId->Description }}</option>
               @endforeach
             </select>
-            <label for="education_level">Education Level</label>
-            @error('education_level')
+            <label for="EducationId">Education Level</label>
+            @error('EducationId')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+          </div>
+          <div class="form-floating mb-3">
+            <label for="PaymentSlip" class="form-label">Payment Slip</label>
+            <input class="form-control" type="file" id="PaymentSlip" name="PaymentSlip">
+            @error('PaymentSlip')
             <p class="text-danger">{{ $message }}</p>
             @enderror
           </div>

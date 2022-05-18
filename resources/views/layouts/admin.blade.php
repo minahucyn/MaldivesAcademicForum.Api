@@ -37,9 +37,9 @@
   <meta name="theme-color" content="#ffffff">
 </head>
 
-<body class="d-flex flex-column h-100">
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" aria-label="navbar">
+<body>
+  <!-- <header>
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" aria-label="navbar">
       <div class="container">
         <a class="navbar-brand" href="#">
           <img src="{{ asset('images/logos/dummylogo.jpg') }}" alt="" height="50" width="120">
@@ -56,34 +56,70 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/speakers" id="speakers">Speakers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/sponsors" id="sponsors">Sponsors</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/faq" id="faqs">FAQs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about" id="about">About</a>
+              <a class="nav-link" href="/admin/education-levels" id="education-levels">Education Levels</a>
             </li>
           </ul>
         </div>
       </div>
-    </nav>
-  </header>
+    </nav> 
+   
+  </header>-->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="{{ asset('images/logos/dummylogo.jpg') }}" alt="" height="50" width="120">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0" id="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/dashboard" id="dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/education-levels" id="education-levels">Education Levels</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/conferences" id="conferences">Conferences</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/attendees" id="attendees">Attendees</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/registrations" id="registrations">Registrations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/topics" id="topics">Topics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/faq" id="faq">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/users" id="users">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/speakers" id="speakers">Speakers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/sponsors" id="sponsors">Sponsors</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    @yield('content')
+  </main>
 
 
-  @yield('content')
+
+
 
   <footer class="footer mt-auto py-3 bg-dark text-secondary">
     <div class="container">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="/" class="nav-link px-2 text-white">Home</a></li>
-        <li class="nav-item"><a href="/speakers" class="nav-link px-2 text-white">Speakers</a></li>
-        <li class="nav-item"><a href="/sponsors" class="nav-link px-2 text-white">Sponsors</a></li>
-        <li class="nav-item"><a href="/faq" class="nav-link px-2 text-white">FAQs</a></li>
-        <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About</a></li>
       </ul>
       <p class="text-center text-white">All Rights Reserved © {{ now()->year }} Maldives Academic Forum</p>
     </div>

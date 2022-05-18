@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\EducationLevels;
 
 class PagesController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $educationIds = EducationLevels::all();
+        return view('index', compact('educationIds'));
     }
 
     public function speakers()

@@ -34,60 +34,50 @@
   @yield('meta')
   <meta name="msapplication-TileColor" content="#ffffff">
   <!-- <meta name="msapplication-TileImage" content="img/fav/ms-icon-144x144.png"> -->
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#712cf9">
+
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #f5f5f5;
+    }
+
+    .form-signin {
+      max-width: 330px;
+      padding: 15px;
+    }
+
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  </style>
+
 </head>
 
-<body class="d-flex flex-column h-100">
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" aria-label="navbar">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="{{ asset('images/logos/dummylogo.jpg') }}" alt="" height="50" width="120">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#appnavbar" aria-controls="appnavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="appnavbar">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/" id="home">
-                Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/speakers" id="speakers">Speakers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/sponsors" id="sponsors">Sponsors</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/faq" id="faqs">FAQs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about" id="about">About</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-
-  @yield('content')
-
-  <footer class="footer mt-auto py-3 bg-dark text-secondary">
-    <div class="container">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="/" class="nav-link px-2 text-white">Home</a></li>
-        <li class="nav-item"><a href="/speakers" class="nav-link px-2 text-white">Speakers</a></li>
-        <li class="nav-item"><a href="/sponsors" class="nav-link px-2 text-white">Sponsors</a></li>
-        <li class="nav-item"><a href="/faq" class="nav-link px-2 text-white">FAQs</a></li>
-        <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About</a></li>
-      </ul>
-      <p class="text-center text-white">All Rights Reserved © {{ now()->year }} Maldives Academic Forum</p>
-    </div>
-  </footer>
+<body class="text-center">
+  <main class="form-signin w-100 m-auto">
+    @yield('content')
+  </main>
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -95,39 +85,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/public/js/app.js"></script>
-
-  @yield('scripts')
-
-  <script>
-    @if(Session::has('message'))
-    var type = "{{ Session::get('alert-type', 'info') }}";
-    switch (type) {
-      case 'info':
-        toastr.info("{{ Session::get('message') }}", 'Info', {
-          closeButton: true
-        });
-        break;
-
-      case 'warning':
-        toastr.warning("{{ Session::get('message') }}", 'Warning', {
-          closeButton: true
-        });
-        break;
-
-      case 'success':
-        toastr.success("{{ Session::get('message') }}", 'Success', {
-          closeButton: true
-        });
-        break;
-
-      case 'error':
-        toastr.error("{{ Session::get('message') }}", 'Error', {
-          closeButton: true
-        });
-        break;
-    }
-    @endif
-  </script>
 
 </body>
 

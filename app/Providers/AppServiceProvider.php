@@ -64,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
                 [
                     ''
                 ],
-                $explode[1]
+                $explode[0]
             );
 
             //png
@@ -83,6 +83,15 @@ class AppServiceProvider extends ServiceProvider
             return true;
         });
 
+        Validator::extend('is_png_jpg', function ($attribute, $value, $params, $validator) {
+            $image = base64_decode($value);
+            $f = finfo_open();
+            $result = finfo_buffer($f, $image, FILEINFO_MIME_TYPE);
+            $console = 'console.log(' . json_encode($result) . ');';
+            $console = sprintf('<script>%s</script>', $console);
+            echo $console;
+            return $result == 'image/png' || $result == 'image/jpg';
+        });
     }
 
     /**

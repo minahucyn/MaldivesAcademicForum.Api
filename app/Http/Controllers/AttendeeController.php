@@ -32,45 +32,45 @@ class AttendeeController extends Controller
         $this->ValidateRegistrationRequest($request);
 
         $educationLevels = EducationLevels::find($request['EducationId']);
-        if(is_null($educationLevels)){
+        if (is_null($educationLevels)) {
             return Response([
-                'Error Code'=> 'E001',
-                'Message'=> 'Invalid education level Id. '
-            ],404);
+                'Error Code' => 'E001',
+                'Message' => 'Invalid education level Id. '
+            ], 404);
         }
 
         $attendee = $this->GetAttendeeByNid($request);
         $attendeeByEmail = Attendee::where('Email', '=', $request['Email'])->get();
-        $conference = Conferences::where('Id','=',$request['ConferenceId'])->get();
+        $conference = Conferences::where('Id', '=', $request['ConferenceId'])->get();
         $inserted = null;
 
-        if(count($attendee) == 0){
+        if (count($attendee) == 0) {
 
-            if(count($attendeeByEmail) > 0){
+            if (count($attendeeByEmail) > 0) {
                 return Response([
-                    'Error Code'=> 'E002',
-                    'Message'=> 'The email address is already registered for another national ID / Passport.'
-                ],409);
+                    'Error Code' => 'E002',
+                    'Message' => 'The email address is already registered for another national ID / Passport.'
+                ], 409);
             }
 
             $attendee = $this->SaveAttendee($request);
-        } 
+        }
 
         //check if the registration requested conference exists!
-        if(count($conference) == 0){
+        if (count($conference) == 0) {
             return Response([
-                'Error Code'=> 'E003',
-                'Message'=> 'Cannot find the conference for which the registration is requested.'
-            ],404);
+                'Error Code' => 'E003',
+                'Message' => 'Cannot find the conference for which the registration is requested.'
+            ], 404);
         }
 
         $registration = $this->GetRegistrationByConferenceAndAttendee($attendee[0], $conference[0]);
-        
-        if(count($registration) > 0){
+
+        if (count($registration) > 0) {
             return Response([
-                'Error Code'=> 'E004',
-                'Message'=> 'A registration request for the conference already exists for this user.'
-            ],409);
+                'Error Code' => 'E004',
+                'Message' => 'A registration request for the conference already exists for this user.'
+            ], 409);
         }
 
         $registration = $this->SaveRegistration($attendee[0], $conference[0]);
@@ -78,13 +78,13 @@ class AttendeeController extends Controller
         $this->SavePaymentSlip($registration[0]->PaymentSlipName, $request['PaymentSlip']);
 
         //return saved record
-        $attendeeResgistration = new AttendeeRegistration($attendee[0],
+        $attendeeResgistration = new AttendeeRegistration(
+            $attendee[0],
             $registration[0],
             $educationLevels,
             $conference[0]
         );
         return Response()->json($attendeeResgistration);
-        
     }
 
     /**
@@ -124,12 +124,13 @@ class AttendeeController extends Controller
 
     public function SavePaymentSlip($filename, $content)
     {
-        $fp = fopen($filename.'.txt', 'w');
+        $fp = fopen($filename . '.txt', 'w');
         fwrite($fp, $content);
         fclose($fp);
     }
 
-    private function ValidateRegistrationRequest(Request $request){
+    private function ValidateRegistrationRequest(Request $request)
+    {
         $request->validate([
             'Fullname' => 'required|string|max:100',
             'NidPp' => 'required|string|min:3|max:20',
@@ -139,20 +140,22 @@ class AttendeeController extends Controller
             'EducationId' => 'required|integer',
             'PaymentSlip' => 'required|base64image',
             'ConferenceId' => 'integer|required'
-        ],[
-            'Fullname.human_name'=> 'Fullname cannot have numbers!',
-            'Birthdate.date_format'=>"Bithdate format must be yyyy-MM-dd.",
+        ], [
+            'Fullname.human_name' => 'Fullname cannot have numbers!',
+            'Birthdate.date_format' => "Bithdate format must be yyyy-MM-dd.",
             'Birthdate.before' => 'You must be atleast 15 years old to register for the conference.',
-            'PaymentSlip'=>'Please provide a valid image [png or jpg].',
-            'ContactNumber.e.164._phone_number'=> 'The contact number must conform to E.164 standard.'
+            'PaymentSlip' => 'Please provide a valid image [png or jpg].',
+            'ContactNumber.e.164._phone_number' => 'The contact number must conform to E.164 standard.'
         ]);
     }
 
-    private function GetAttendeeByNid(Request $request){
+    private function GetAttendeeByNid(Request $request)
+    {
         return Attendee::where('NidPp', '=', $request['NidPp'])->get();
     }
 
-    private function SaveAttendee($request){
+    private function SaveAttendee($request)
+    {
         $attendee = new Attendee;
         $attendee->Fullname = $request->Fullname;
         $attendee->NidPp = $request->NidPp;
@@ -160,24 +163,26 @@ class AttendeeController extends Controller
         $attendee->ContactNumber = $request->ContactNumber;
         $attendee->Email = $request->Email;
         $attendee->EducationId = $request->EducationId;
-        
+
         $attendee->save();
         return $this->GetAttendeeByNid($request);
     }
 
-    private function SaveRegistration(Attendee $attendee, Conferences $conference){
+    private function SaveRegistration(Attendee $attendee, Conferences $conference)
+    {
         $newRegistration = new Registrations;
-        $newRegistration -> AttendeeId = $attendee->Id;
-        $newRegistration -> ConferenceId = $conference->Id;
-        $newRegistration -> save();
-        
+        $newRegistration->AttendeeId = $attendee->Id;
+        $newRegistration->ConferenceId = $conference->Id;
+        $newRegistration->save();
+
         return $this->GetRegistrationByConferenceAndAttendee($attendee, $conference);
     }
 
-    private function GetRegistrationByConferenceAndAttendee(Attendee $attendee, Conferences $conference){
+    private function GetRegistrationByConferenceAndAttendee(Attendee $attendee, Conferences $conference)
+    {
         return Registrations::where([
-            ['AttendeeId','=',$attendee->Id],
-            ['ConferenceId','=', $conference->Id]
+            ['AttendeeId', '=', $attendee->Id],
+            ['ConferenceId', '=', $conference->Id]
         ])->get();
     }
 }

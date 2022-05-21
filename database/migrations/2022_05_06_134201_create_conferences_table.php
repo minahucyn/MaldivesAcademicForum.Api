@@ -24,16 +24,16 @@ class CreateConferencesTable extends Migration
         });
     }
 
-//     CREATE TABLE [dbo].[Conferences]
-// (
-// 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
-// 	[Description] VARCHAR(100) NOT NULL,
-// 	[Venue] VARCHAR(200) NOT NULL,
-// 	[RegistrationStartDate] DATETIME2 NOT NULL,
-// 	[RegistrationEndDate] DATETIME2 NOT NULL,
-// 	[StartDate] DATETIME2 NOT NULL,
-// 	[EndDate] DATETIME2 NOT NULL,
-// )
+    //     CREATE TABLE [dbo].[Conferences]
+    // (
+    // 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+    // 	[Description] VARCHAR(100) NOT NULL,
+    // 	[Venue] VARCHAR(200) NOT NULL,
+    // 	[RegistrationStartDate] DATETIME2 NOT NULL,
+    // 	[RegistrationEndDate] DATETIME2 NOT NULL,
+    // 	[StartDate] DATETIME2 NOT NULL,
+    // 	[EndDate] DATETIME2 NOT NULL,
+    // )
 
 
     /**

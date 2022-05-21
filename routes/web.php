@@ -56,16 +56,8 @@ Route::get('/admin/users', [UsersController::class, 'index']);
 
 //education levels
 Route::get('/admin/education-levels', [EducationLevelsController::class, 'index']);
-// Route::get('/admin/education-levels/create', [EducationLevelsController::class, 'create']);
-// Route::get('/admin/education-levels/edit/{id}', [EducationLevelsController::class, 'edit']);
-// Route::post('/admin/education-levels/store', [EducationLevelsController::class, 'store']);
-// Route::patch('/admin/education-levels/update', [EducationLevelsController::class, 'update']);
-
-
-
-
-
-
-Route::prefix('admin')->group(function () {
-  Route::resource('educationlevels', 'App\Http\Controllers\Administration\EducationLevelsController');
-});
+Route::get('/admin/education-levels/create', [EducationLevelsController::class, 'create']);
+Route::get('/admin/education-levels/edit/{id}', [EducationLevelsController::class, 'edit']);
+Route::post('/admin/education-levels/store', [EducationLevelsController::class, 'store']);
+Route::patch('/admin/education-levels/update/{id}', [EducationLevelsController::class, 'update']);
+Route::delete('/admin/education-levels/destroy/{id}', [EducationLevelsController::class, 'destroy']);

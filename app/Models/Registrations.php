@@ -9,5 +9,5 @@ class Registrations extends Model
     protected $fillable = [0];
 
     public $timestamps = false;
-    
+    protected $primaryKey = 'Id';
 }

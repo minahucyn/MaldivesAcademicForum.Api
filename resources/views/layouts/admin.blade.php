@@ -78,7 +78,7 @@
             <a class="nav-link" href="/admin/dashboard" id="dashboard">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('educationlevels.index') }}" id="education-levels">Education Levels</a>
+            <a class="nav-link" href="/admin/education-levels" id="education-levels">Education Levels</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/conferences" id="conferences">Conferences</a>

@@ -4,7 +4,7 @@
 
 <div class="container p-4">
   <h1>Create education level</h1>
-  <form class="form" action="{{ route('educationlevels.store') }}" method="post">
+  <form class="form" action="/admin/education-levels/store" method="post">
     @csrf
     <div class="row">
       <div class="form-group col-md-4">
@@ -15,7 +15,7 @@
     </div>
     <div class="form-group row mt-xl-5 text-center">
       <div class="col-sm-12 mb-3 mb-sm-0">
-        <a href="{{ route('educationlevels.index') }}" class="btn btn-secondary">
+        <a href="/admin/education-levels" class="btn btn-secondary">
           Back
         </a>
         <button class="btn btn-primary" type="submit"> Submit</button>

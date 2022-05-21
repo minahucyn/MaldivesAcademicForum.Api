@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Speakers extends Model
 {
     //
+    protected $primaryKey = 'Id';
 }

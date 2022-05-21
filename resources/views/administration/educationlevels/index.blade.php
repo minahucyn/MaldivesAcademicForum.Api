@@ -5,7 +5,7 @@
 <div class="container p-4">
   <h1>Education Levels</h1>
   <div class="d-flex justify-content-end">
-    <a href="{{ route('educationlevels.create') }}" class="btn btn-primary">Create</a>
+    <a href="/admin/education-levels/create" class="btn btn-primary">Create</a>
   </div>
   <table class="table table-bordered table-hover mt-4">
     <thead>
@@ -21,8 +21,9 @@
         <th scope="row">{{ $level->Id }}</th>
         <td>{{ $level->Description }}</td>
         <td class="text-center">
-          <a class="btn btn-warning text-white" href="{{ route('educationlevels.edit', $level->Id) }}">Edit</a>
-          <a class="btn btn-danger" href="#">Delete</a>
+          <a class="btn btn-warning text-white" href="/admin/education-levels/edit/{{ $level->Id }}}">Edit</a>
+          <a class="btn btn-danger" onclick="deleteEducationLevel('{{ $level->Id }}')">Delete</a>
+          <!-- href="/admin/education-levels/destroy/{{ $level->Id }}" -->
         </td>
       </tr>
       @empty

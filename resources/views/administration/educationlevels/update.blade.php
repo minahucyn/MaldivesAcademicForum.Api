@@ -4,7 +4,7 @@
 
 <div class="container p-4">
   <h1>Update education level</h1>
-  <form class="form" action="{{ route('educationlevels.update', $level->Id) }}" method="post">
+  <form class="form" action="/admin/education-levels/update/{{ $level->Id }}" method="post">
     @csrf
     @method('PATCH')
     <div class="row">

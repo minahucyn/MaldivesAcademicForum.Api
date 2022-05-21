@@ -64,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
                 [
                     ''
                 ],
-                $explode[0]
+                $explode[1]
             );
 
             //png

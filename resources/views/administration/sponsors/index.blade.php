@@ -4,22 +4,25 @@
 
 <div class="container p-4">
   <h1>Sponsors</h1>
+  <div class="d-flex justify-content-end">
+    <a href="#" class="btn btn-primary">Create</a>
+  </div>
   <table class="table table-bordered table-hover mt-4">
     <thead>
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Description</th>
-        <th scope="col">LogoUri</th>
-        <th scope="col">Actions</th>
+        <th scope="col" class="text-center">Description</th>
+        <th scope="col" class="text-center">LogoUri</th>
+        <th scope="col" class="text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
       @forelse ($sponsors as $sponsor)
       <tr>
         <th scope="row">{{ $sponsor->Id }}</th>
-        <td>{{ $speaker->Description }}</td>
-        <td>{{ $speaker->LogoUri }}</td>
-        <td>
+        <td class="text-center">{{ $speaker->Description }}</td>
+        <td class="text-center">{{ $speaker->LogoUri }}</td>
+        <td class="text-center">
           <a class="btn btn-warning" href="#">Edit</a>
           <a class="btn btn-danger" href="#">Delete</a>
         </td>

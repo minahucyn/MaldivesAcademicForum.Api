@@ -3,24 +3,46 @@
 @section('content')
 
 <div class="container p-4">
-  <h1>FAQ</h1>
-</div>
+  <h1>Frequently Asked Questions</h1>
+  <div class="d-flex justify-content-end">
+    <a href="#" class="btn btn-primary">Create</a>
+  </div>
+  <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
+    @forelse ($faqs as $faq)
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-heading{{ $faq->id }}">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ $faq->id }}" aria-expanded="true" aria-controls="panelsStayOpen-collapse{{ $faq->id }}">
+          <strong>{{ $faq->Question }}</strong>
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapse{{ $faq->id }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ $faq->id }}">
+        <div class="accordion-body">
+          {{ $faq->Answer }}
+        </div>
+      </div>
+    </div>
+    @empty
+    <h4 class="text-center">No FAQs</h4>
+    @endforelse
 
-@endsection
+  </div>
 
-@section('scripts')
-<script>
-  $(function() {
-    let items = $("#nav > li > a.active")
-    for (let index = 0; index < items.length; index++) {
-      const element = items[index]
-      $(element).removeClass('active')
-      $(element).removeAttr('aria-current')
-    }
 
-    $("#faq").addClass("active")
-    $("#faq").attr('aria-current', 'page')
+  @endsection
 
-  });
-</script>
-@endsection
+  @section('scripts')
+  <script>
+    $(function() {
+      let items = $("#nav > li > a.active")
+      for (let index = 0; index < items.length; index++) {
+        const element = items[index]
+        $(element).removeClass('active')
+        $(element).removeAttr('aria-current')
+      }
+
+      $("#faq").addClass("active")
+      $("#faq").attr('aria-current', 'page')
+
+    });
+  </script>
+  @endsection

@@ -8,5 +8,5 @@ class EducationLevels extends Model
 {
     //
     public $timestamps = false;
-
+    protected $primaryKey = 'Id';
 }

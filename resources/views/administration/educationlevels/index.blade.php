@@ -4,12 +4,15 @@
 
 <div class="container p-4">
   <h1>Education Levels</h1>
+  <div class="d-flex justify-content-end">
+    <a href="/admin/education-levels/create" class="btn btn-primary">Create</a>
+  </div>
   <table class="table table-bordered table-hover mt-4">
     <thead>
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Description</th>
-        <th scope="col">Actions</th>
+        <th scope="col" class="text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -17,9 +20,10 @@
       <tr>
         <th scope="row">{{ $level->Id }}</th>
         <td>{{ $level->Description }}</td>
-        <td>
-          <a class="btn btn-warning" href="#">Edit</a>
-          <a class="btn btn-danger" href="#">Delete</a>
+        <td class="text-center">
+          <a class="btn btn-warning text-white" href="/admin/education-levels/edit/{{ $level->Id }}}">Edit</a>
+          <a class="btn btn-danger" onclick="deleteEducationLevel('{{ $level->Id }}')">Delete</a>
+          <!-- href="/admin/education-levels/destroy/{{ $level->Id }}" -->
         </td>
       </tr>
       @empty

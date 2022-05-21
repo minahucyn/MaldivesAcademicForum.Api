@@ -41,10 +41,9 @@ Route::post('/register', [AttendeeController::class, 'registration']);
 
 
 
-//administrator login
+//administrator
 Route::get('/login', [UserController::class, 'login']);
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
-Route::get('/admin/education-levels', [EducationLevelsController::class, 'index']);
 Route::get('/admin/attendees', [AttendeesController::class, 'index']);
 Route::get('/admin/conferences', [ConferencesController::class, 'index']);
 Route::get('/admin/faq', [FaqController::class, 'index']);
@@ -53,3 +52,20 @@ Route::get('/admin/speakers', [SpeakersController::class, 'index']);
 Route::get('/admin/sponsors', [SponsorsController::class, 'index']);
 Route::get('/admin/topics', [TopicsController::class, 'index']);
 Route::get('/admin/users', [UsersController::class, 'index']);
+
+
+//education levels
+Route::get('/admin/education-levels', [EducationLevelsController::class, 'index']);
+// Route::get('/admin/education-levels/create', [EducationLevelsController::class, 'create']);
+// Route::get('/admin/education-levels/edit/{id}', [EducationLevelsController::class, 'edit']);
+// Route::post('/admin/education-levels/store', [EducationLevelsController::class, 'store']);
+// Route::patch('/admin/education-levels/update', [EducationLevelsController::class, 'update']);
+
+
+
+
+
+
+Route::prefix('admin')->group(function () {
+  Route::resource('educationlevels', 'App\Http\Controllers\Administration\EducationLevelsController');
+});

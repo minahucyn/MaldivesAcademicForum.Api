@@ -4,6 +4,9 @@
 
 <div class="container p-4">
   <h1>Topics</h1>
+  <div class="d-flex justify-content-end">
+    <a href="#" class="btn btn-primary">Create</a>
+  </div>
 </div>
 
 @endsection

@@ -7,7 +7,7 @@
   <div class="d-flex justify-content-end">
     <a href="#" class="btn btn-primary">Create</a>
   </div>
-  <table class="table table-bordered table-hover mt-4">
+  <table class="table table-responsive table-bordered table-hover mt-4">
     <thead>
       <tr>
         <th scope="col">Id</th>

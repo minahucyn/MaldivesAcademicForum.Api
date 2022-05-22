@@ -8,5 +8,4 @@ class Faqs extends Model
 {
     //
     public $timestamps = false;
-    protected $primaryKey = 'Id';
 }

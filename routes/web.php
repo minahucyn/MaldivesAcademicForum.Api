@@ -46,7 +46,6 @@ Route::get('/login', [UserController::class, 'login']);
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 Route::get('/admin/attendees', [AttendeesController::class, 'index']);
 Route::get('/admin/conferences', [ConferencesController::class, 'index']);
-Route::get('/admin/faq', [FaqController::class, 'index']);
 Route::get('/admin/registrations', [RegistrationsController::class, 'index']);
 Route::get('/admin/speakers', [SpeakersController::class, 'index']);
 Route::get('/admin/sponsors', [SponsorsController::class, 'index']);
@@ -61,3 +60,12 @@ Route::get('/admin/education-levels/edit/{id}', [EducationLevelsController::clas
 Route::post('/admin/education-levels/store', [EducationLevelsController::class, 'store']);
 Route::patch('/admin/education-levels/update/{id}', [EducationLevelsController::class, 'update']);
 Route::delete('/admin/education-levels/destroy/{id}', [EducationLevelsController::class, 'destroy']);
+
+
+//faqs
+Route::get('/admin/faqs', [FaqController::class, 'index']);
+Route::get('/admin/faqs/create', [FaqController::class, 'create']);
+Route::get('/admin/faqs/edit/{id}', [FaqController::class, 'edit']);
+Route::post('/admin/faqs/store', [FaqController::class, 'store']);
+Route::patch('/admin/faqs/update/{id}', [FaqController::class, 'update']);
+Route::delete('/admin/faqs/destroy/{id}', [FaqController::class, 'destroy']);

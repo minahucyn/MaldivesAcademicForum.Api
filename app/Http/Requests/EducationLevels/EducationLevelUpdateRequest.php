@@ -27,7 +27,7 @@ class EducationLevelUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'Description.required' => 'Education level description is requried'
+            'Description.required' => 'Education level description is required'
         ];
     }
 }

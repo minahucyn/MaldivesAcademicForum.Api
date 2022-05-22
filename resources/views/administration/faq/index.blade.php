@@ -5,7 +5,7 @@
 <div class="container p-4">
   <h1>Frequently Asked Questions</h1>
   <div class="d-flex justify-content-end">
-    <a href="#" class="btn btn-primary">Create</a>
+    <a href="/admin/faqs/create" class="btn btn-primary">Create</a>
   </div>
   <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
     @forelse ($faqs as $faq)
@@ -17,7 +17,13 @@
       </h2>
       <div id="panelsStayOpen-collapse{{ $faq->id }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ $faq->id }}">
         <div class="accordion-body">
-          {{ $faq->Answer }}
+          <div>
+            {{ $faq->Answer }}
+          </div>
+          <div class="mt-3">
+            <a href="/admin/faqs/edit/{{ $faq->id }}" class="btn btn-warning">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+          </div>
         </div>
       </div>
     </div>

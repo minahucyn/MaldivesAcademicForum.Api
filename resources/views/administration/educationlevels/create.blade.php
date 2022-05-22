@@ -10,7 +10,7 @@
       <div class="form-group col-md-4">
         <label for="Description">Description</label>
         <input name="Description" type="text" class="form-control" placeholder="Description" required />
-        <span class="text-danger">{{ $errors->first('description') }}</span>
+        <span class="text-danger">{{ $errors->first('Description') }}</span>
       </div>
     </div>
     <div class="form-group row mt-xl-5 text-center">

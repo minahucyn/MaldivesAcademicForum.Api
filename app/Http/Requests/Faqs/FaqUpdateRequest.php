@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\EducationLevels;
+namespace App\Http\Requests\Faqs;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class EducationLevelCreateRequest extends FormRequest
+class FaqUpdateRequest extends FormRequest
 {
     public function authorize()
     {
@@ -20,14 +20,16 @@ class EducationLevelCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'Description' => 'required'
+            'Question' => 'required',
+            'Answer' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'Description.required' => 'Education level description is required'
+            'Question.required' => 'Question is required',
+            'Answer.required' => 'Answer is required'
         ];
     }
 }

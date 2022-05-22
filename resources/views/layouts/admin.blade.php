@@ -93,7 +93,7 @@
             <a class="nav-link" href="/admin/topics" id="topics">Topics</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/faq" id="faq">FAQ</a>
+            <a class="nav-link" href="/admin/faqs" id="faq">FAQ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/users" id="users">Users</a>

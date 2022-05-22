@@ -29,7 +29,7 @@
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
         <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#register">Register</a>
         <a class="btn btn-outline-primary btn-lg px-4 me-sm-3" href="/login">Login</a>
-        <a class="btn btn-outline-danger btn-lg px-4 me-sm-3" href="/admin/education-levels">Levels</a>
+        <a class="btn btn-outline-danger btn-lg px-4 me-sm-3" href="/admin/dashboard">Admin</a>
       </div>
     </div>
   </div>
@@ -81,7 +81,7 @@
         <p class="fs-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, illo nostrum vel similique quisquam commodi.</p>
       </div>
       <div class="col-md-7 mx-auto col-lg-5">
-        <form action="/register" method="post"  enctype="multipart/form-data" class="p-1 p-md-5 border rounded-3 bg-light">
+        <form action="/register" method="post" enctype="multipart/form-data" class="p-1 p-md-5 border rounded-3 bg-light">
           @csrf
           <input type="hidden" name="">
           <div class="form-floating mb-3">
@@ -131,15 +131,15 @@
             @enderror
           </div>
           <div class="form-floating mb-3">
-          <select name="ConferenceId" id="ConferenceId" class="form-select" aria-label="Conference" value="{{ old('ConferenceId') }}" required>
-            @foreach($conferenceIds as $conferenceId)
-            <option value="{{$conferenceId->Id}}">{{ $conferenceId->Description }}</option>
-            @endforeach
-          </select>
-          <label for="ConferenceId">Conference</label>
-          @error('ConferenceId')
-          <p class="text-danger">{{ $message }}</p>
-          @enderror
+            <select name="ConferenceId" id="ConferenceId" class="form-select" aria-label="Conference" value="{{ old('ConferenceId') }}" required>
+              @foreach($conferenceIds as $conferenceId)
+              <option value="{{$conferenceId->Id}}">{{ $conferenceId->Description }}</option>
+              @endforeach
+            </select>
+            <label for="ConferenceId">Conference</label>
+            @error('ConferenceId')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
           </div>
           <div class="form-floating mb-3">
             <label for="PaymentSlip" class="form-label">Payment Slip</label>

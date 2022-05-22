@@ -42,7 +42,6 @@ class AttendeeController extends Controller
         $attendee = $this->GetAttendeeByNid($request);
         $attendeeByEmail = Attendee::where('Email', '=', $request['Email'])->get();
         $conference = Conferences::where('Id', '=', $request['ConferenceId'])->get();
-        $inserted = null;
 
         if (count($attendee) == 0) {
 
@@ -144,7 +143,7 @@ class AttendeeController extends Controller
             'Fullname.human_name' => 'Fullname cannot have numbers!',
             'Birthdate.date_format' => "Bithdate format must be yyyy-MM-dd.",
             'Birthdate.before' => 'You must be atleast 15 years old to register for the conference.',
-            'PaymentSlip' => 'Please provide a valid image [png or jpg].',
+            'PaymentSlip.base64image' => 'Please provide a valid image [ png or jpg ].',
             'ContactNumber.e.164._phone_number' => 'The contact number must conform to E.164 standard.'
         ]);
     }

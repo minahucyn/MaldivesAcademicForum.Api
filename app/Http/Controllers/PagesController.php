@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EducationLevels;
+use App\Models\Conferences;
 
 class PagesController extends Controller
 {
     public function index()
     {
         $educationIds = EducationLevels::all();
-        return view('index', compact('educationIds'));
+        $conferenceIds = Conferences::all();
+        return view('index', compact('educationIds','conferenceIds'));
     }
 
     public function speakers()

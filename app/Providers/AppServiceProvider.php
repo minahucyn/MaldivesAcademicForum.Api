@@ -44,6 +44,12 @@ class AppServiceProvider extends ServiceProvider
          */
         Validator::extend('base64image', function ($attribute, $value, $parameters, $validator) {
             $explode = explode(',', $value);
+
+            //if the array length is less than 2, the base64 is invalid
+            if(sizeof($explode) < 2){
+                return false;
+            }
+
             $allow = ['png', 'jpg'];
             $format = str_replace(
                 [

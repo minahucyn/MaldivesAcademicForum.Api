@@ -81,7 +81,7 @@
         <p class="fs-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, illo nostrum vel similique quisquam commodi.</p>
       </div>
       <div class="col-md-7 mx-auto col-lg-5">
-        <form action="/register" method="post" class="p-1 p-md-5 border rounded-3 bg-light">
+        <form action="/register" method="post"  enctype="multipart/form-data" class="p-1 p-md-5 border rounded-3 bg-light">
           @csrf
           <input type="hidden" name="">
           <div class="form-floating mb-3">
@@ -129,6 +129,17 @@
             @error('EducationId')
             <p class="text-danger">{{ $message }}</p>
             @enderror
+          </div>
+          <div class="form-floating mb-3">
+          <select name="ConferenceId" id="ConferenceId" class="form-select" aria-label="Conference" value="{{ old('ConferenceId') }}" required>
+            @foreach($conferenceIds as $conferenceId)
+            <option value="{{$conferenceId->Id}}">{{ $conferenceId->Description }}</option>
+            @endforeach
+          </select>
+          <label for="ConferenceId">Conference</label>
+          @error('ConferenceId')
+          <p class="text-danger">{{ $message }}</p>
+          @enderror
           </div>
           <div class="form-floating mb-3">
             <label for="PaymentSlip" class="form-label">Payment Slip</label>

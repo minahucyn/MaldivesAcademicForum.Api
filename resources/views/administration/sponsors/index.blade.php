@@ -5,14 +5,14 @@
 <div class="container p-4">
   <h1>Sponsors</h1>
   <div class="d-flex justify-content-end">
-    <a href="#" class="btn btn-primary">Create</a>
+    <a href="/admin/sponsors/create" class="btn btn-primary">Create</a>
   </div>
   <table class="table table-bordered table-hover mt-4">
     <thead>
       <tr>
         <th scope="col">Id</th>
         <th scope="col" class="text-center">Description</th>
-        <th scope="col" class="text-center">LogoUri</th>
+        <th scope="col" class="text-center">Logo Uri</th>
         <th scope="col" class="text-center">Actions</th>
       </tr>
     </thead>
@@ -20,11 +20,16 @@
       @forelse ($sponsors as $sponsor)
       <tr>
         <th scope="row">{{ $sponsor->Id }}</th>
-        <td class="text-center">{{ $speaker->Description }}</td>
-        <td class="text-center">{{ $speaker->LogoUri }}</td>
+        <td class="text-center">{{ $sponsor->Description }}</td>
+        <td class="text-center">{{ $sponsor->LogoUri }}</td>
         <td class="text-center">
-          <a class="btn btn-warning" href="#">Edit</a>
-          <a class="btn btn-danger" href="#">Delete</a>
+          <a class="btn btn-warning" href="/admin/sponsors/edit/{{ $sponsor->Id }}">Edit</a>
+          <a onclick="deleteSponsor('{{ $sponsor->Id }}')" class="btn btn-danger">Delete</a>
+
+          <form action="/admin/sponsors/destroy/{{ $sponsor->Id }}" method="POST" id="sponsor-form-{{ $sponsor->Id }}">
+            {{csrf_field()}}
+            {{method_field('DELETE')}}
+          </form>
         </td>
       </tr>
       @empty
@@ -54,5 +59,13 @@
     $("#sponsors").attr('aria-current', 'page')
 
   });
+
+  function deleteSponsor(id) {
+    let res = confirm('Are you sure you want to delete this sponsor?');
+    if (res) {
+      const target = `#sponsor-form-${id}`;
+      $(target).submit();
+    }
+  }
 </script>
 @endsection

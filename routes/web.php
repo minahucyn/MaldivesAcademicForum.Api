@@ -47,8 +47,8 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 Route::get('/admin/attendees', [AttendeesController::class, 'index']);
 Route::get('/admin/conferences', [ConferencesController::class, 'index']);
 Route::get('/admin/registrations', [RegistrationsController::class, 'index']);
-Route::get('/admin/speakers', [SpeakersController::class, 'index']);
-Route::get('/admin/sponsors', [SponsorsController::class, 'index']);
+
+
 Route::get('/admin/topics', [TopicsController::class, 'index']);
 Route::get('/admin/users', [UsersController::class, 'index']);
 
@@ -76,3 +76,11 @@ Route::get('/admin/speakers/edit/{id}', [SpeakersController::class, 'edit']);
 Route::post('/admin/speakers/store', [SpeakersController::class, 'store']);
 Route::patch('/admin/speakers/update/{id}', [SpeakersController::class, 'update']);
 Route::delete('/admin/speakers/destroy/{id}', [SpeakersController::class, 'destroy']);
+
+//sponsors
+Route::get('/admin/sponsors', [SponsorsController::class, 'index']);
+Route::get('/admin/sponsors/create', [SponsorsController::class, 'create']);
+Route::get('/admin/sponsors/edit/{id}', [SponsorsController::class, 'edit']);
+Route::post('/admin/sponsors/store', [SponsorsController::class, 'store']);
+Route::patch('/admin/sponsors/update/{id}', [SponsorsController::class, 'update']);
+Route::delete('/admin/sponsors/destroy/{id}', [SponsorsController::class, 'destroy']);

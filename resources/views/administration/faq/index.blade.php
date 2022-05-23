@@ -22,7 +22,12 @@
           </div>
           <div class="mt-3">
             <a href="/admin/faqs/edit/{{ $faq->id }}" class="btn btn-warning">Edit</a>
-            <a href="" class="btn btn-danger">Delete</a>
+            <a onclick="deleteFaq('{{ $faq->id }}')" class="btn btn-danger">Delete</a>
+
+            <form action="/admin/faqs/destroy/{{ $faq->id }}" method="POST" id="faq-form-{{ $faq->id }}">
+              {{csrf_field()}}
+              {{method_field('DELETE')}}
+            </form>
           </div>
         </div>
       </div>
@@ -50,5 +55,13 @@
       $("#faq").attr('aria-current', 'page')
 
     });
+
+    function deleteFaq(id) {
+      let res = confirm('Are you sure you want to delete this FAQ?');
+      if (res) {
+        const target = `#faq-form-${id}`;
+        $(target).submit();
+      }
+    }
   </script>
   @endsection

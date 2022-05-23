@@ -6,7 +6,7 @@
 <div class="container p-4">
   <h1>Speakers</h1>
   <div class="d-flex justify-content-end">
-    <a href="#" class="btn btn-primary">Create</a>
+    <a href="/admin/speakers/create" class="btn btn-primary">Create</a>
   </div>
   <table class="table table-bordered table-hover mt-4">
     <thead>
@@ -26,8 +26,13 @@
         <td class="text-center">{{ $speaker->Designation }}</td>
         <td class="text-center">{{ $speaker->Description }}</td>
         <td class="text-center">
-          <a class="btn btn-warning" href="#">Edit</a>
-          <a class="btn btn-danger" href="#">Delete</a>
+          <a class="btn btn-warning" href="/admin/speakers/edit/{{ $speaker->Id }}">Edit</a>
+          <a onclick="deleteSpeaker('{{ $speaker->Id }}')" class="btn btn-danger">Delete</a>
+
+          <form action="/admin/speakers/destroy/{{ $speaker->Id }}" method="POST" id="speaker-form-{{ $speaker->Id }}">
+            {{csrf_field()}}
+            {{method_field('DELETE')}}
+          </form>
         </td>
       </tr>
       @empty
@@ -56,5 +61,13 @@
     $("#speakers").attr('aria-current', 'page')
 
   });
+
+  function deleteSpeaker(id) {
+    let res = confirm('Are you sure you want to delete this speaker?');
+    if (res) {
+      const target = `#speaker-form-${id}`;
+      $(target).submit();
+    }
+  }
 </script>
 @endsection

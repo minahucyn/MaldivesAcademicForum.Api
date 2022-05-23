@@ -23,8 +23,6 @@
         <td class="text-center">
           <a class="btn btn-warning text-white" href="/admin/education-levels/edit/{{ $level->Id }}">Edit</a>
           <a class="btn btn-danger" onclick="deleteEducationLevel('{{ $level->Id }}')">Delete</a>
-          <!-- href="/admin/education-levels/destroy/{{ $level->Id }}" -->
-
           <form action="/admin/education-levels/destroy/{{ $level->Id }}" method="POST" id="level-form-{{ $level->Id }}">
             {{csrf_field()}}
             {{method_field('DELETE')}}

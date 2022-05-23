@@ -61,7 +61,6 @@ Route::post('/admin/education-levels/store', [EducationLevelsController::class, 
 Route::patch('/admin/education-levels/update/{id}', [EducationLevelsController::class, 'update']);
 Route::delete('/admin/education-levels/destroy/{id}', [EducationLevelsController::class, 'destroy']);
 
-
 //faqs
 Route::get('/admin/faqs', [FaqController::class, 'index']);
 Route::get('/admin/faqs/create', [FaqController::class, 'create']);
@@ -69,3 +68,11 @@ Route::get('/admin/faqs/edit/{id}', [FaqController::class, 'edit']);
 Route::post('/admin/faqs/store', [FaqController::class, 'store']);
 Route::patch('/admin/faqs/update/{id}', [FaqController::class, 'update']);
 Route::delete('/admin/faqs/destroy/{id}', [FaqController::class, 'destroy']);
+
+//speakers
+Route::get('/admin/speakers', [SpeakersController::class, 'index']);
+Route::get('/admin/speakers/create', [SpeakersController::class, 'create']);
+Route::get('/admin/speakers/edit/{id}', [SpeakersController::class, 'edit']);
+Route::post('/admin/speakers/store', [SpeakersController::class, 'store']);
+Route::patch('/admin/speakers/update/{id}', [SpeakersController::class, 'update']);
+Route::delete('/admin/speakers/destroy/{id}', [SpeakersController::class, 'destroy']);

@@ -5,7 +5,7 @@
 <div class="container p-4">
   <h1>Conferences</h1>
   <div class="d-flex justify-content-end">
-    <a href="#" class="btn btn-primary">Create</a>
+    <a href="/admin/conferences/create" class="btn btn-primary">Create</a>
   </div>
   <table class="table table-responsive table-bordered table-hover mt-4">
     <thead>
@@ -31,8 +31,12 @@
         <td class="text-center">{{ date('d-m-Y', strtotime($conference->StartDate))}}</td>
         <td class="text-center">{{ date('d-m-Y', strtotime($conference->EndDate))}}</td>
         <td class="text-center">
-          <a class="btn btn-warning" href="#">Edit</a>
-          <a class="btn btn-danger" href="#">Delete</a>
+          <a class="btn btn-warning" href="/admin/conferences/edit/{{ $conference->Id }}">Edit</a>
+          <a class="btn btn-danger" onclick="deleteConference('{{ $conference->Id }}')">Delete</a>
+          <form action="/admin/conferences/destroy/{{ $conference->Id }}" method="POST" id="conference-form-{{ $conference->Id }}">
+            {{csrf_field()}}
+            {{method_field('DELETE')}}
+          </form>
         </td>
       </tr>
       @empty
@@ -60,5 +64,13 @@
     $("#conferences").attr('aria-current', 'page')
 
   });
+
+  function deleteConference(id) {
+    let res = confirm('Are you sure you want to delete this conference?');
+    if (res) {
+      const target = `#conference-form-${id}`;
+      $(target).submit();
+    }
+  }
 </script>
 @endsection

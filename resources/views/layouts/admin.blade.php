@@ -81,6 +81,15 @@
             <a class="nav-link" href="/admin/education-levels" id="education-levels">Education Levels</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/admin/speakers" id="speakers">Speakers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/sponsors" id="sponsors">Sponsors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/faqs" id="faq">FAQ</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/admin/conferences" id="conferences">Conferences</a>
           </li>
           <li class="nav-item">
@@ -92,17 +101,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/admin/topics" id="topics">Topics</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/faqs" id="faq">FAQ</a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="/admin/users" id="users">Users</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/speakers" id="speakers">Speakers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/sponsors" id="sponsors">Sponsors</a>
           </li>
         </ul>
       </div>

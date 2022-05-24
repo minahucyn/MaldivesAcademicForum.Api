@@ -9,12 +9,11 @@ class EducationLevelCreateRequest extends FormRequest
 {
     public function authorize()
     {
-        // if (Auth::check()) {
-        //     return true;
-        // }
+        if (Auth::check()) {
+            return true;
+        }
 
-        //return false;
-        return true;
+        return false;
     }
 
     public function rules()

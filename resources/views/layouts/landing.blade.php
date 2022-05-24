@@ -64,9 +64,24 @@
             </li>
           </ul>
           <ul class="navbar-nav me-auto d-flex">
+            @if( auth()->check() )
             <li class="nav-item">
-              <a class="btn btn-sm bg-white" href="/admin/dashboard" id="users"><strong>Go to dashboard</strong></a>
+              <a class="nav-link" href="/admin/dashboard" id="users"><strong>Go to dashboard</strong></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">{{ auth()->user()->name }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout"><strong>Logout</strong></a>
+            </li>
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="/login"><strong>Login</strong></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register"><strong>Register</strong></a>
+            </li>
+            @endif
           </ul>
         </div>
       </div>

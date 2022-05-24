@@ -12,6 +12,12 @@ use App\Http\Requests\EducationLevels\EducationLevelUpdateRequest;
 
 class EducationLevelsController extends Controller
 {
+
+  public function __construct()
+  {
+    $this->middleware('auth')->except('show');
+  }
+
   public function index()
   {
     $levels = EducationLevels::all();

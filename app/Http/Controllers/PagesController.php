@@ -12,7 +12,8 @@ class PagesController extends Controller
     {
         $educationIds = EducationLevels::all();
         $conferenceIds = Conferences::all();
-        return view('index', compact('educationIds','conferenceIds'));
+
+        return view('index', compact('educationIds', 'conferenceIds'));
     }
 
     public function speakers()

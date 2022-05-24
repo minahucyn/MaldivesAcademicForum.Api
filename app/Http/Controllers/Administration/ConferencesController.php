@@ -10,6 +10,11 @@ use App\Http\Requests\Conferences\ConferenceUpdateRequest;
 
 class ConferencesController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth')->except('show');
+  }
+
   public function index()
   {
     $conferences = Conferences::all();

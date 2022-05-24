@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\DB;
 
 class AttendeesController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth')->except('show');
+  }
+
   public function index()
   {
     $attendees = Attendees::all();

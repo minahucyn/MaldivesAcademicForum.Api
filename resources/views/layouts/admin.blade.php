@@ -107,9 +107,17 @@
           </li>
         </ul>
         <ul class="navbar-nav me-auto d-flex">
+          @if( auth()->check() )
           <li class="nav-item">
-            <a class="btn btn-sm bg-white" href="/" id="users"><strong>Go to website</strong></a>
+            <a class="nav-link" href="/" id="users"><strong>Go to website</strong></a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">{{ auth()->user()->name }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout"><strong>Logout</strong></a>
+          </li>
+          @endif
         </ul>
       </div>
     </div>

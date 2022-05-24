@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\PagesController;
 use  App\Http\Controllers\UserController;
 use  App\Http\Controllers\AttendeeController;
+use  App\Http\Controllers\AuthController;
 
 
 use  App\Http\Controllers\Administration\DashboardController;
@@ -37,12 +38,16 @@ Route::get('/about', [PagesController::class, 'about']);
 
 
 //attendee conference registration
-Route::post('/register', [AttendeeController::class, 'registration']);
+//Route::post('/register', [AttendeeController::class, 'registration']);
 
-
+//auth
+Route::get('/register', [AuthController::class, 'create']);
+Route::post('/register', [AuthController::class, 'store']);
+Route::get('/login', [AuthController::class, 'login'])->name('login');;
+Route::post('/login', [AuthController::class, 'processLogin']);
+Route::get('/logout', [AuthController::class, 'destroy']);
 
 //administrator
-Route::get('/login', [UserController::class, 'login']);
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 Route::get('/admin/registrations', [RegistrationsController::class, 'index']);
 Route::get('/admin/topics', [TopicsController::class, 'index']);

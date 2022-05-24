@@ -10,6 +10,11 @@ use App\Http\Requests\Speakers\SpeakerUpdateRequest;
 
 class SpeakersController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth')->except('show');
+  }
+
   public function index()
   {
     $speakers = Speakers::all();

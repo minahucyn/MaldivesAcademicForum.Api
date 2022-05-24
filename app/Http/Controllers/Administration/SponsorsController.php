@@ -10,6 +10,12 @@ use App\Http\Requests\Sponsors\SponsorUpdateRequest;
 
 class SponsorsController extends Controller
 {
+
+  public function __construct()
+  {
+    $this->middleware('auth')->except('show');
+  }
+
   public function index()
   {
     $sponsors = Sponsors::all();

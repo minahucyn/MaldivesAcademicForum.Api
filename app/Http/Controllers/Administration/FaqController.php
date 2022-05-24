@@ -10,6 +10,12 @@ use App\Http\Requests\Faqs\FaqUpdateRequest;
 
 class FaqController extends Controller
 {
+
+  public function __construct()
+  {
+    $this->middleware('auth')->except('show');
+  }
+
   public function index()
   {
     $faqs = Faqs::all();

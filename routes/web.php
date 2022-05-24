@@ -44,8 +44,6 @@ Route::post('/register', [AttendeeController::class, 'registration']);
 //administrator
 Route::get('/login', [UserController::class, 'login']);
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
-Route::get('/admin/attendees', [AttendeesController::class, 'index']);
-Route::get('/admin/conferences', [ConferencesController::class, 'index']);
 Route::get('/admin/registrations', [RegistrationsController::class, 'index']);
 Route::get('/admin/topics', [TopicsController::class, 'index']);
 Route::get('/admin/users', [UsersController::class, 'index']);
@@ -90,3 +88,11 @@ Route::get('/admin/conferences/edit/{id}', [ConferencesController::class, 'edit'
 Route::post('/admin/conferences/store', [ConferencesController::class, 'store']);
 Route::patch('/admin/conferences/update/{id}', [ConferencesController::class, 'update']);
 Route::delete('/admin/conferences/destroy/{id}', [ConferencesController::class, 'destroy']);
+
+//attendees
+Route::get('/admin/attendees', [AttendeesController::class, 'index']);
+Route::get('/admin/attendees/create', [AttendeesController::class, 'create']);
+Route::get('/admin/attendees/edit/{id}', [AttendeesController::class, 'edit']);
+Route::post('/admin/attendees/store', [AttendeesController::class, 'store']);
+Route::patch('/admin/attendees/update/{id}', [AttendeesController::class, 'update']);
+Route::delete('/admin/attendees/destroy/{id}', [AttendeesController::class, 'destroy']);

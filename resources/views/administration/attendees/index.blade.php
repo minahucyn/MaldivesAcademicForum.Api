@@ -5,7 +5,7 @@
 <div class="container p-4">
   <h1>Attendees</h1>
   <div class="d-flex justify-content-end">
-    <a href="#" class="btn btn-primary">Create</a>
+    <a href="/admin/attendees/create" class="btn btn-primary">Create</a>
   </div>
   <table class="table table-bordered table-hover mt-4">
     <thead>
@@ -26,13 +26,24 @@
         <th scope="row">{{ $attendee->Id }}</th>
         <td>{{ $attendee->Fullname }}</td>
         <td class="text-center">{{ $attendee->NidPp }}</td>
-        <td class="text-center">{{ $attendee->Birthdate }}</td>
+        <td class="text-center">{{ date('d-m-Y', strtotime( $attendee->Birthdate))}}</td>
         <td class="text-center">{{ $attendee->ContactNumber }}</td>
         <td class="text-center">{{ $attendee->Email }}</td>
-        <td class="text-center">{{ $attendee->EducationId }}</td>
         <td class="text-center">
-          <a class="btn btn-warning" href="#">Edit</a>
-          <a class="btn btn-danger" href="#">Delete</a>
+          @foreach($levels as $level)
+          @if($attendee->EducationId==$level->Id)
+          {{$level->Description}}
+          @endif
+          @endforeach
+        </td>
+        <td class="text-center">
+          <a class="btn btn-warning" href="/admin/attendees/edit/{{ $attendee->Id }}">Edit</a>
+          <a class="btn btn-danger" onclick="deleteAttendee('{{ $attendee->Id }}')">Delete</a>
+
+          <form action="/admin/attendees/destroy/{{ $attendee->Id }}" method="POST" id="attendee-form-{{ $attendee->Id }}">
+            {{csrf_field()}}
+            {{method_field('DELETE')}}
+          </form>
         </td>
       </tr>
       @empty
@@ -62,5 +73,13 @@
     $("#attendees").attr('aria-current', 'page')
 
   });
+
+  function deleteAttendee(id) {
+    let res = confirm('Are you sure you want to delete this attendee?');
+    if (res) {
+      const target = `#attendee-form-${id}`;
+      $(target).submit();
+    }
+  }
 </script>
 @endsection

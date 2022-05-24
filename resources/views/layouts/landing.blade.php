@@ -41,20 +41,15 @@
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" aria-label="navbar">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <img src="{{ asset('images/logos/dummylogo.jpg') }}" alt="" height="50" width="120">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#appnavbar" aria-controls="appnavbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="appnavbar">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/" id="home">
-                Home
-              </a>
-            </li>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0" id="nav">
             <li class="nav-item">
               <a class="nav-link" href="/speakers" id="speakers">Speakers</a>
             </li>
@@ -66,6 +61,11 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/about" id="about">About</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav me-auto d-flex">
+            <li class="nav-item">
+              <a class="btn btn-sm bg-white" href="/admin/dashboard" id="users"><strong>Go to dashboard</strong></a>
             </li>
           </ul>
         </div>

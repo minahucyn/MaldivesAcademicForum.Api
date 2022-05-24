@@ -143,7 +143,7 @@
           </div>
           <div class="form-floating mb-3">
             <label for="PaymentSlip" class="form-label">Payment Slip</label>
-            <input class="form-control" type="file" id="PaymentSlip" name="PaymentSlip">
+            <input class="form-control" type="file" id="PaymentSlip" name="PaymentSlip" accept="image/png, image/jpeg">
             @error('PaymentSlip')
             <p class="text-danger">{{ $message }}</p>
             @enderror

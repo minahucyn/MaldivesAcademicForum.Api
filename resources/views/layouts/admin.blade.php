@@ -106,6 +106,11 @@
             <a class="nav-link" href="/admin/users" id="users">Users</a>
           </li>
         </ul>
+        <ul class="navbar-nav me-auto d-flex">
+          <li class="nav-item">
+            <a class="btn btn-sm bg-white" href="/" id="users"><strong>Go to website</strong></a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Attendee;
+use App\Models\Attendees;
 use App\Models\EducationLevels;
 use App\Models\Conferences;
 use App\Models\Registrations;
@@ -40,7 +40,7 @@ class AttendeeController extends Controller
         }
 
         $attendee = $this->GetAttendeeByNid($request);
-        $attendeeByEmail = Attendee::where('Email', '=', $request['Email'])->get();
+        $attendeeByEmail = Attendees::where('Email', '=', $request['Email'])->get();
         $conference = Conferences::where('Id', '=', $request['ConferenceId'])->get();
 
         if (count($attendee) == 0) {
@@ -150,12 +150,12 @@ class AttendeeController extends Controller
 
     private function GetAttendeeByNid(Request $request)
     {
-        return Attendee::where('NidPp', '=', $request['NidPp'])->get();
+        return Attendees::where('NidPp', '=', $request['NidPp'])->get();
     }
 
     private function SaveAttendee($request)
     {
-        $attendee = new Attendee;
+        $attendee = new Attendees;
         $attendee->Fullname = $request->Fullname;
         $attendee->NidPp = $request->NidPp;
         $attendee->Birthdate = $request->Birthdate;
@@ -167,7 +167,7 @@ class AttendeeController extends Controller
         return $this->GetAttendeeByNid($request);
     }
 
-    private function SaveRegistration(Attendee $attendee, Conferences $conference)
+    private function SaveRegistration(Attendees $attendee, Conferences $conference)
     {
         $newRegistration = new Registrations;
         $newRegistration->AttendeeId = $attendee->Id;
@@ -177,7 +177,7 @@ class AttendeeController extends Controller
         return $this->GetRegistrationByConferenceAndAttendee($attendee, $conference);
     }
 
-    private function GetRegistrationByConferenceAndAttendee(Attendee $attendee, Conferences $conference)
+    private function GetRegistrationByConferenceAndAttendee(Attendees $attendee, Conferences $conference)
     {
         return Registrations::where([
             ['AttendeeId', '=', $attendee->Id],

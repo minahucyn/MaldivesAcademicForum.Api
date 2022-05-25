@@ -51,7 +51,7 @@ Route::get('/logout', [AuthController::class, 'destroy']);
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 Route::get('/admin/registrations', [RegistrationsController::class, 'index']);
 Route::get('/admin/topics', [TopicsController::class, 'index']);
-Route::get('/admin/users', [UsersController::class, 'index']);
+
 
 
 //education levels
@@ -101,3 +101,11 @@ Route::get('/admin/attendees/edit/{id}', [AttendeesController::class, 'edit']);
 Route::post('/admin/attendees/store', [AttendeesController::class, 'store']);
 Route::patch('/admin/attendees/update/{id}', [AttendeesController::class, 'update']);
 Route::delete('/admin/attendees/destroy/{id}', [AttendeesController::class, 'destroy']);
+
+//users
+Route::get('/admin/users', [UsersController::class, 'index']);
+Route::get('/admin/users/create', [UsersController::class, 'create']);
+Route::get('/admin/users/edit/{id}', [UsersController::class, 'edit']);
+Route::post('/admin/users/store', [UsersController::class, 'store']);
+Route::patch('/admin/users/update/{id}', [UsersController::class, 'update']);
+Route::delete('/admin/users/destroy/{id}', [UsersController::class, 'destroy']);

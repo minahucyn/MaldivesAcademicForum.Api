@@ -50,7 +50,7 @@ Route::get('/logout', [AuthController::class, 'destroy']);
 //administrator
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 Route::get('/admin/registrations', [RegistrationsController::class, 'index']);
-Route::get('/admin/topics', [TopicsController::class, 'index']);
+
 
 
 
@@ -109,3 +109,11 @@ Route::get('/admin/users/edit/{id}', [UsersController::class, 'edit']);
 Route::post('/admin/users/store', [UsersController::class, 'store']);
 Route::patch('/admin/users/update/{id}', [UsersController::class, 'update']);
 Route::delete('/admin/users/destroy/{id}', [UsersController::class, 'destroy']);
+
+//topics
+Route::get('/admin/topics', [TopicsController::class, 'index']);
+Route::get('/admin/topics/create', [TopicsController::class, 'create']);
+Route::get('/admin/topics/edit/{id}', [TopicsController::class, 'edit']);
+Route::post('/admin/topics/store', [TopicsController::class, 'store']);
+Route::patch('/admin/topics/update/{id}', [TopicsController::class, 'update']);
+Route::delete('/admin/topics/destroy/{id}', [TopicsController::class, 'destroy']);

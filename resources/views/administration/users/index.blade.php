@@ -38,7 +38,7 @@
       </tr>
       @empty
       <tr>
-        <td colspan="8" class="text-center">No Speakers</td>
+        <td colspan="5" class="text-center">No Speakers</td>
       </tr>
       @endforelse
     </tbody>

@@ -8,4 +8,5 @@ class Topics extends Model
 {
     //
     protected $primaryKey = 'Id';
+    public $timestamps = false;
 }

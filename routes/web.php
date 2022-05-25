@@ -29,16 +29,12 @@ use  App\Http\Controllers\Administration\UsersController;
 |
 */
 
-//site pages
+//landing pages
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/speakers', [PagesController::class, 'speakers']);
 Route::get('/sponsors', [PagesController::class, 'sponsors']);
 Route::get('/faq', [PagesController::class, 'faq']);
 Route::get('/about', [PagesController::class, 'about']);
-
-
-//attendee conference registration
-//Route::post('/register', [AttendeeController::class, 'registration']);
 
 //auth
 Route::get('/register', [AuthController::class, 'create']);
@@ -47,12 +43,8 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');;
 Route::post('/login', [AuthController::class, 'processLogin']);
 Route::get('/logout', [AuthController::class, 'destroy']);
 
-//administrator
+//dashboard
 Route::get('/admin/dashboard', [DashboardController::class, 'index']);
-Route::get('/admin/registrations', [RegistrationsController::class, 'index']);
-
-
-
 
 //education levels
 Route::get('/admin/education-levels', [EducationLevelsController::class, 'index']);
@@ -117,3 +109,11 @@ Route::get('/admin/topics/edit/{id}', [TopicsController::class, 'edit']);
 Route::post('/admin/topics/store', [TopicsController::class, 'store']);
 Route::patch('/admin/topics/update/{id}', [TopicsController::class, 'update']);
 Route::delete('/admin/topics/destroy/{id}', [TopicsController::class, 'destroy']);
+
+//registrations
+Route::get('/admin/registrations', [RegistrationsController::class, 'index']);
+Route::get('/admin/registrations/create', [RegistrationsController::class, 'create']);
+Route::get('/admin/registrations/edit/{id}', [RegistrationsController::class, 'edit']);
+Route::post('/admin/registrations/store', [RegistrationsController::class, 'store']);
+Route::patch('/admin/registrations/update/{id}', [RegistrationsController::class, 'update']);
+Route::delete('/admin/registrations/destroy/{id}', [RegistrationsController::class, 'destroy']);

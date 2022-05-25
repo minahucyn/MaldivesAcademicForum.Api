@@ -35,6 +35,8 @@ Route::get('/speakers', [PagesController::class, 'speakers']);
 Route::get('/sponsors', [PagesController::class, 'sponsors']);
 Route::get('/faq', [PagesController::class, 'faq']);
 Route::get('/about', [PagesController::class, 'about']);
+Route::post('/attendee-registration', [PagesController::class, 'publicRegistration']);
+
 
 //auth
 Route::get('/register', [AuthController::class, 'create']);

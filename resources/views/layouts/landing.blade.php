@@ -78,9 +78,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/login"><strong>Login</strong></a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="/register"><strong>Register</strong></a>
-            </li>
+            </li> -->
             @endif
           </ul>
         </div>

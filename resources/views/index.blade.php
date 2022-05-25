@@ -28,7 +28,7 @@
       </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
         <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#register">Register</a>
-        <a class="btn btn-outline-primary btn-lg px-4 me-sm-3" href="/login">Login</a>
+        <!-- <a class="btn btn-outline-primary btn-lg px-4 me-sm-3" href="/login">Login</a> -->
       </div>
     </div>
   </div>
@@ -80,9 +80,9 @@
         <p class="fs-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, illo nostrum vel similique quisquam commodi.</p>
       </div>
       <div class="col-md-7 mx-auto col-lg-5">
-        <form action="/register" method="post" enctype="multipart/form-data" class="p-1 p-md-5 border rounded-3 bg-light">
+        <form action="/attendee-registration" method="post" enctype="multipart/form-data" class="p-1 p-md-5 border rounded-3 bg-light">
           @csrf
-          <input type="hidden" name="">
+          <input type="hidden" name="redirect">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" placeholder="Full name" aria-label="Full name" name="Fullname" id="Fullname" value="{{ old('Fullname') }}" required>
             <label for="Fullname">Full name</label>
@@ -105,7 +105,7 @@
             @enderror
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="ContactNumber" name="ContactNumber" placeholder="contact number" value="{{ old('ContactNumber') }}" required>
+            <input type="text" class="form-control" id="ContactNumber" name="ContactNumber" placeholder="contact number" value="{{ old('ContactNumber') }}" pattern="[79][0-9]{6}" required>
             <label for="ContactNumber">Contact Number</label>
             @error('ContactNumber')
             <p class="text-danger">{{ $message }}</p>
@@ -142,7 +142,7 @@
           </div>
           <div class="form-floating mb-3">
             <label for="PaymentSlip" class="form-label">Payment Slip</label>
-            <input class="form-control" type="file" id="PaymentSlip" name="PaymentSlip" accept="image/png, image/jpeg">
+            <input class="form-control" type="file" id="PaymentSlip" name="PaymentSlip" accept="image/png, image/jpeg, image/jpg">
             @error('PaymentSlip')
             <p class="text-danger">{{ $message }}</p>
             @enderror

@@ -23,7 +23,7 @@
         <th scope="row">{{ $user->id }}</th>
         <td>{{ $user->name }}</td>
         <td class="text-center">{{ $user->email }}</td>
-        <td class="text-center">{{ $user->created_at }}</td>
+        <td class="text-center">{{ date('d-m-Y', strtotime($user->created_at))}}</td>
         <td class="text-center">
           <!-- <a class="btn btn-warning" href="/admin/users/edit/{{ $user->id }}">Edit</a> -->
 

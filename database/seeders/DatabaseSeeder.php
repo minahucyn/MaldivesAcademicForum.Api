@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $user = new User();
         $user->name = 'John Doe';
         $user->email = 'john@doe.com';
-        $user->password = 'John Doe';
+        $user->password = 'Qwe123!@#';
         $user->save();
 
         $conference1 = new Conferences;

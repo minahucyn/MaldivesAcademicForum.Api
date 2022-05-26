@@ -8,6 +8,7 @@ use App\Models\Conferences;
 use App\Models\Attendees;
 use App\Models\Faqs;
 use App\Models\Registrations;
+use App\Models\ConferenceImages;
 use App\Http\Requests\Landing\RegistrationRequest;
 use App\Models\Speakers;
 use App\Models\Sponsors;
@@ -19,9 +20,10 @@ class PagesController extends Controller
     public function index()
     {
         $educationIds = EducationLevels::all();
-        $conferenceIds = Conferences::all();
+        $conferenceIds = Conferences::orderBy('StartDate', 'desc')->get();
+        $sponsors = Sponsors::all();
 
-        return view('index', compact('educationIds', 'conferenceIds'));
+        return view('index', compact('educationIds', 'conferenceIds', 'sponsors'));
     }
 
     public function publicRegistration(RegistrationRequest $request)
@@ -120,16 +122,6 @@ class PagesController extends Controller
         }
     }
 
-    public function speakers()
-    {
-        return view('speakers');
-    }
-
-    public function sponsors()
-    {
-        return view('sponsors');
-    }
-
     public function faq()
     {
         $faqs = Faqs::all();
@@ -142,5 +134,11 @@ class PagesController extends Controller
         $sponsors = Sponsors::all();
         $conferences = Conferences::orderBy('RegistrationStartDate', 'desc')->get();
         return view('about', compact('conferences', 'speakers', 'sponsors'));
+    }
+
+    public function gallery($id)
+    {
+        $images = ConferenceImages::where('conference_id', '=', $id)->get();
+        return view('gallery', compact('images'));
     }
 }

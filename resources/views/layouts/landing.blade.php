@@ -42,7 +42,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="navbar">
       <div class="container">
         <a class="navbar-brand" href="/">
-          <img src="{{ asset('images/logos/dummylogo.jpg') }}" alt="" height="50" width="120">
+          <img src="{{ asset('images/logos/aaaa.png') }}" alt="" height="50" width="175">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#appnavbar" aria-controls="appnavbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

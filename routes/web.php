@@ -35,6 +35,7 @@ Route::get('/speakers', [PagesController::class, 'speakers']);
 Route::get('/sponsors', [PagesController::class, 'sponsors']);
 Route::get('/faq', [PagesController::class, 'faq']);
 Route::get('/about', [PagesController::class, 'about']);
+Route::get('/conference-gallery/{id}', [PagesController::class, 'gallery']);
 Route::post('/attendee-registration', [PagesController::class, 'publicRegistration']);
 
 
@@ -87,6 +88,10 @@ Route::get('/admin/conferences/edit/{id}', [ConferencesController::class, 'edit'
 Route::post('/admin/conferences/store', [ConferencesController::class, 'store']);
 Route::patch('/admin/conferences/update/{id}', [ConferencesController::class, 'update']);
 Route::delete('/admin/conferences/destroy/{id}', [ConferencesController::class, 'destroy']);
+Route::get('/admin/conferences/gallery/{id}', [ConferencesController::class, 'gallery']);
+Route::get('/admin/conferences/photos/create/{id}', [ConferencesController::class, 'createPhotos']);
+Route::post('/admin/conferences/photos/store/{id}', [ConferencesController::class, 'storePhotos']);
+Route::delete('/admin/conferences/photos/destroy/{id}', [ConferencesController::class, 'deletePhoto']);
 
 //attendees
 Route::get('/admin/attendees', [AttendeesController::class, 'index']);

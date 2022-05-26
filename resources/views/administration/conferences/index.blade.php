@@ -31,6 +31,7 @@
         <td class="text-center">{{ date('d-m-Y', strtotime($conference->StartDate))}}</td>
         <td class="text-center">{{ date('d-m-Y', strtotime($conference->EndDate))}}</td>
         <td class="text-center">
+          <a class="btn btn-info text-white" href="/admin/conferences/gallery/{{ $conference->Id }}">Gallery</a>
           <a class="btn btn-warning" href="/admin/conferences/edit/{{ $conference->Id }}">Edit</a>
           <a class="btn btn-danger" onclick="deleteConference('{{ $conference->Id }}')">Delete</a>
           <form action="/admin/conferences/destroy/{{ $conference->Id }}" method="POST" id="conference-form-{{ $conference->Id }}">

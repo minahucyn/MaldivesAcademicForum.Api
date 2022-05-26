@@ -7,7 +7,12 @@
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1 class="fw-light">About Us</h1>
-      <p class="lead text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti dolor obcaecati dolorum nulla fugit accusamus fugiat illum, facere quibusdam sed adipisci atque facilis est ipsam tempore laboriosam, temporibus accusantium incidunt cupiditate optio! Et, esse dolor?.</p>
+      <p class="lead text-muted">
+        Maldives academic forum is a platform for students, scholars, scientists and
+        parents to search and find scholarships, summer schools, grants, fully funded conferences,
+        trainings, seminars and other study and research opportunities worldwide.
+        Every day publications on new opportunities across hundreds of disciplines appear online on Maldives academic forum.
+      </p>
     </div>
   </div>
 </section>
@@ -17,7 +22,7 @@
   <div class="row mt-2 mb-4">
     <h1 class="text-center">Our Speakers</h1>
   </div>
-  <div class="row">
+  <div class="row mt-5">
     @foreach($speakers as $speaker)
     <div class="col-lg-4 d-flex justify-content-center flex-column align-items-center">
       <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -25,7 +30,7 @@
         <rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
       </svg>
 
-      <h2 class="fw-normal">{{ $speaker->Fullname }}</h2>
+      <h2 class="fw-normal mt-4">{{ $speaker->Fullname }}</h2>
       <p>{{ $speaker->Description }}</p>
     </div>
     @endforeach
@@ -37,15 +42,14 @@
   <div class="row mt-2 mb-4">
     <h1 class="text-center">Our Sponsors</h1>
   </div>
-  <div class="row">
+  <div class="row mb-5 mt-5">
     @foreach($sponsors as $sponsor)
     <div class="col d-flex justify-content-center flex-column align-items-center">
-      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
         <title>Placeholder</title>
         <rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-      </svg>
-
-      <h2 class="fw-normal">{{ $sponsor->Description }}</h2>
+      </svg> -->
+      <img class="rounded-lg-3" src="{{ $sponsor->LogoUri }}" alt="" width="auto" height="75">
     </div>
     @endforeach
   </div>
@@ -68,7 +72,9 @@
             </svg>
 
             <div class="card-body">
-              <p class="card-text"><strong>{{ $conference->Description }}</strong></p>
+              <a href="/conference-gallery/{{ $conference->Id }}">
+                <p class="card-text"><strong>{{ $conference->Description }}</strong></p>
+              </a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="">
                   <?php

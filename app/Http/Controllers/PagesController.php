@@ -9,6 +9,7 @@ use App\Models\Attendees;
 use App\Models\Registrations;
 use App\Http\Requests\Landing\RegistrationRequest;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -22,10 +23,25 @@ class PagesController extends Controller
 
     public function publicRegistration(RegistrationRequest $request)
     {
+        //check if attendee with same email and nid exists
+        $exists = Attendees::where(
+            [
+                ['NidPp', '=', $request->get('NidPp')]
+            ]
+        )->get();
+
+        if (count($exists) > 0) {
+            $notification = array(
+                'message' => 'Your NID / PP is already registered.',
+                'alert-type' => 'error'
+            );
+            return redirect('/#register')->with($notification);
+        }
+
         //check if attendee exists
-        $existingAttendee = Attendees::where('Email', '=', $request->get('Email'))->get();
-        $conference = Conferences::where('Id', '=', $request->get('ConferenceId'))->get();
-        $educationLevel = EducationLevels::where('Id', '=', $request->get('EducationId'))->get();
+        $existingAttendee = Attendees::where('Email', $request->get('Email'))->get();
+        $conference = Conferences::find($request->get('ConferenceId'));
+        $educationLevel = EducationLevels::find($request->get('EducationId'));
 
         if (count($existingAttendee) < 1) {
 
@@ -43,7 +59,7 @@ class PagesController extends Controller
             $registration = new Registrations();
 
             $registration->AttendeeId = $attendee->Id;
-            $registration->ConferenceId = $request->get('ConferenceId');
+            $registration->ConferenceId = $conference->Id;
             $registration->IsApproved = 0;
 
             $uuid = Uuid::uuid4();
@@ -61,26 +77,26 @@ class PagesController extends Controller
             );
             return redirect('/')->with($notification);
         } else {
-            $latestAttrendee = Attendees::orderBy('id', 'desc')->limit(1)->get();
+            $attendeeId = $existingAttendee[0]->Id;
             $existingRegistration = Registrations::where(
                 [
-                    ['AttendeeId', '=', $latestAttrendee->Id],
-                    ['ConferenceId', '=', $request->get('ConferenceId')]
+                    ['AttendeeId', '=', $existingAttendee[0]->Id],
+                    ['ConferenceId', '=', $conference->Id]
                 ]
             )->get();
 
             if (count($existingRegistration) === 1) {
                 $notification = array(
                     'message' => 'You are already registered to the conference.',
-                    'alert-type' => 'warning'
+                    'alert-type' => 'success'
                 );
                 return redirect('/')->with($notification);
             } else {
                 //create registration
                 $registration = new Registrations();
 
-                $registration->AttendeeId = $existingAttendee->Id;
-                $registration->ConferenceId = $request->get('ConferenceId');
+                $registration->AttendeeId = $existingAttendee[0]->Id;
+                $registration->ConferenceId = $conference->Id;
                 $registration->IsApproved = 0;
 
                 $uuid = Uuid::uuid4();

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Conferences;
 use App\Models\EducationLevels;
-use App\Models\Attendee;
+use App\Models\Attendees;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,13 +31,12 @@ class DatabaseSeeder extends Seeder
         $education->Description = 'Diploma';
         $education->save();
 
-        $attendee = new Attendee;
+        $attendee = new Attendees;
         $attendee->Id = 1;
         $attendee->Fullname = 'Mina';
         $attendee->NidPp = 'A309252';
         $attendee->ContactNo = '+9605457485';
         $attendee->Email = 'mina@nis.com';
         $attendee->EducationId = 1;
-
     }
 }

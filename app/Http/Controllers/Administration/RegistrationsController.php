@@ -119,7 +119,10 @@ class RegistrationsController extends Controller
         'alert-type' => 'warning'
       );
 
-      return redirect('/admin/registrations/create')->with($notification);
+      $attendees = Attendees::all();
+      $conferences = Conferences::all();
+      $registration = Registrations::findOrFail($id);
+      return view('administration.registrations.update', compact('registration', 'attendees', 'conferences'))->with($notification);
     }
   }
 

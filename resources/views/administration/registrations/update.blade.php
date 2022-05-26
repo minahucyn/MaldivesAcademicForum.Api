@@ -10,18 +10,26 @@
     <div class="row">
       <div class="form-group col-md-4">
         <label for="AttendeeId">Attendee</label>
-        <select name="AttendeeId" id="AttendeeId" class="form-select mt-2" aria-label="Attendee Id" value="{{ old('AttendeeId') }}" required>
+        <select name="AttendeeId" id="AttendeeId" class="form-select mt-2" aria-label="Attendee Id" value="{{ $registration->AttendeeId }}" required>
           @foreach($attendees as $attendee)
+          @if($registration->AttendeeId === $attendee->Id)
+          <option value="{{$attendee->Id}}" selected>{{ $attendee->Fullname }}</option>
+          @else
           <option value="{{$attendee->Id}}">{{ $attendee->Fullname }}</option>
+          @endif
           @endforeach
         </select>
         <span class="text-danger">{{ $errors->first('AttendeeId') }}</span>
       </div>
       <div class="form-group col-md-4">
         <label for="ConferenceId">Conference</label>
-        <select name="ConferenceId" id="ConferenceId" class="form-select mt-2" aria-label="Conference Id" value="{{ old('ConferenceId') }}" required>
+        <select name="ConferenceId" id="ConferenceId" class="form-select mt-2" aria-label="Conference Id" value="{{ $registration->ConferenceId }}" required>
           @foreach($conferences as $conference)
+          @if($registration->ConferenceId === $conference->Id)
+          <option value="{{$conference->Id}}" selected>{{ $conference->Description }}</option>
+          @else
           <option value="{{$conference->Id}}">{{ $conference->Description }}</option>
+          @endif
           @endforeach
         </select>
         <span class="text-danger">{{ $errors->first('ConferenceId') }}</span>

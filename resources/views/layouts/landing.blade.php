@@ -39,7 +39,7 @@
 
 <body class="d-flex flex-column h-100">
   <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" aria-label="navbar">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="navbar">
       <div class="container">
         <a class="navbar-brand" href="/">
           <img src="{{ asset('images/logos/dummylogo.jpg') }}" alt="" height="50" width="120">
@@ -51,10 +51,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0" id="nav">
             <li class="nav-item">
-              <a class="nav-link" href="/speakers" id="speakers">Speakers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/sponsors" id="sponsors">Sponsors</a>
+              <a class="nav-link" href="/" id="home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/faq" id="faqs">FAQs</a>
@@ -78,9 +75,6 @@
             <li class="nav-item">
               <a class="nav-link" href="/login"><strong>Login</strong></a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="/register"><strong>Register</strong></a>
-            </li> -->
             @endif
           </ul>
         </div>
@@ -95,8 +89,6 @@
     <div class="container">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="/" class="nav-link px-2 text-white">Home</a></li>
-        <li class="nav-item"><a href="/speakers" class="nav-link px-2 text-white">Speakers</a></li>
-        <li class="nav-item"><a href="/sponsors" class="nav-link px-2 text-white">Sponsors</a></li>
         <li class="nav-item"><a href="/faq" class="nav-link px-2 text-white">FAQs</a></li>
         <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About</a></li>
       </ul>

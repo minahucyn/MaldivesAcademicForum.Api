@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\EducationLevels;
 use App\Models\Conferences;
 use App\Models\Attendees;
+use App\Models\Faqs;
 use App\Models\Registrations;
 use App\Http\Requests\Landing\RegistrationRequest;
+use App\Models\Speakers;
+use App\Models\Sponsors;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\DB;
 
@@ -129,11 +132,15 @@ class PagesController extends Controller
 
     public function faq()
     {
-        return view('faq');
+        $faqs = Faqs::all();
+        return view('faq', compact('faqs'));
     }
 
     public function about()
     {
-        return view('about');
+        $speakers = Speakers::all();
+        $sponsors = Sponsors::all();
+        $conferences = Conferences::orderBy('RegistrationStartDate', 'desc')->get();
+        return view('about', compact('conferences', 'speakers', 'sponsors'));
     }
 }

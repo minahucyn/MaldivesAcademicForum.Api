@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Conferences;
 use App\Models\EducationLevels;
 use App\Models\Attendees;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $user = new User();
+        $user->name = 'John Doe';
+        $user->email = 'john@doe.com';
+        $user->password = 'John Doe';
+        $user->save();
+
         $conference1 = new Conferences;
         $conference1->Id = 1;
         $conference1->Description = 'Conference 1';

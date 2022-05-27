@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class RoleClaims extends Model
 {
     //
+    protected $primaryKey = 'Id';
 }

@@ -4,17 +4,20 @@
 
 <div class="container p-4">
   <h1>Conferences</h1>
-  <table class="table table-bordered table-hover mt-4">
+  <div class="d-flex justify-content-end">
+    <a href="/admin/conferences/create" class="btn btn-primary">Create</a>
+  </div>
+  <table class="table table-responsive table-bordered table-hover mt-4">
     <thead>
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Description</th>
         <th scope="col">Venue</th>
-        <th scope="col">Registration Start Date</th>
-        <th scope="col">Registration End Date</th>
-        <th scope="col">Start Date</th>
-        <th scope="col">End Date</th>
-        <th scope="col">Actions</th>
+        <th scope="col" class="text-center">Registration Start Date</th>
+        <th scope="col" class="text-center">Registration End Date</th>
+        <th scope="col" class="text-center">Start Date</th>
+        <th scope="col" class="text-center">End Date</th>
+        <th scope="col" class="text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -23,13 +26,18 @@
         <th scope="row">{{ $conference->Id }}</th>
         <td>{{ $conference->Description }}</td>
         <td>{{ $conference->Venue }}</td>
-        <td>{{ $conference->RegistrationStartDate }}</td>
-        <td>{{ $conference->RegistrationEndDate }}</td>
-        <td>{{ $conference->StartDate }}</td>
-        <td>{{ $conference->EndDate }}</td>
-        <td>
-          <a class="btn btn-warning" href="#">Edit</a>
-          <a class="btn btn-danger" href="#">Delete</a>
+        <td class="text-center">{{ date('d-m-Y', strtotime($conference->RegistrationStartDate))}}</td>
+        <td class="text-center">{{ date('d-m-Y', strtotime($conference->RegistrationEndDate))}}</td>
+        <td class="text-center">{{ date('d-m-Y', strtotime($conference->StartDate))}}</td>
+        <td class="text-center">{{ date('d-m-Y', strtotime($conference->EndDate))}}</td>
+        <td class="text-center">
+          <a class="btn btn-info text-white" href="/admin/conferences/gallery/{{ $conference->Id }}">Gallery</a>
+          <a class="btn btn-warning" href="/admin/conferences/edit/{{ $conference->Id }}">Edit</a>
+          <a class="btn btn-danger" onclick="deleteConference('{{ $conference->Id }}')">Delete</a>
+          <form action="/admin/conferences/destroy/{{ $conference->Id }}" method="POST" id="conference-form-{{ $conference->Id }}">
+            {{csrf_field()}}
+            {{method_field('DELETE')}}
+          </form>
         </td>
       </tr>
       @empty
@@ -57,5 +65,13 @@
     $("#conferences").attr('aria-current', 'page')
 
   });
+
+  function deleteConference(id) {
+    let res = confirm('Are you sure you want to delete this conference?');
+    if (res) {
+      const target = `#conference-form-${id}`;
+      $(target).submit();
+    }
+  }
 </script>
 @endsection

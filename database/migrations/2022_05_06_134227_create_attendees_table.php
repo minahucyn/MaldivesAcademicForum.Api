@@ -15,12 +15,12 @@ class CreateAttendeesTable extends Migration
     {
         Schema::create('attendees', function (Blueprint $table) {
             $table->id('Id');
-            $table->string('Fullname',100);
-            $table->string('NidPp',20);
+            $table->string('Fullname', 100);
+            $table->string('NidPp', 20);
             $table->dateTime('Birthdate');
-            $table->string('ContactNumber'); 
-            $table->string('Email',100);
-            $table->bigInteger('EducationId')->unsigned();;
+            $table->string('ContactNumber');
+            $table->string('Email', 100);
+            $table->bigInteger('EducationId')->unsigned();
 
             $table->unique('Email', 'AK_Attendees_Email');
             $table->unique('NidPp', 'AK_Attendees_NidPp');
@@ -28,7 +28,7 @@ class CreateAttendeesTable extends Migration
         });
     }
 
-/*
+    /*
  CREATE TABLE [dbo].[Attendee]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,

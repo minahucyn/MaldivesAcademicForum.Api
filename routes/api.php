@@ -18,14 +18,14 @@ use App\Models\Attendee;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::middleware('auth:sanctum')->post('/register',[UserController::class, 'register']);
+//Route::middleware('auth:sanctum')->post('/register',[UserController::class, 'register']);
 
-Route::post('attendee/registration', [AttendeeController::class, 'registration']);
+//Route::post('attendee/registration', [AttendeeController::class, 'registration']);
 
-Route::post('login', [UserController::class, 'login']);
+//Route::post('login', [UserController::class, 'login']);
 
 //Route::post('register', [UserController::class, 'register']);

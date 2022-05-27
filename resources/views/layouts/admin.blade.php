@@ -66,8 +66,8 @@
   </header>-->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="{{ asset('images/logos/dummylogo.jpg') }}" alt="" height="50" width="120">
+      <a class="navbar-brand" href="/admin/dashboard">
+        <img src="{{ asset('images/logos/aaaa.png') }}" alt="" height="50" width="175">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -81,6 +81,15 @@
             <a class="nav-link" href="/admin/education-levels" id="education-levels">Education Levels</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/admin/speakers" id="speakers">Speakers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/sponsors" id="sponsors">Sponsors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/faqs" id="faq">FAQ</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/admin/conferences" id="conferences">Conferences</a>
           </li>
           <li class="nav-item">
@@ -92,18 +101,23 @@
           <li class="nav-item">
             <a class="nav-link" href="/admin/topics" id="topics">Topics</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin/faq" id="faq">FAQ</a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="/admin/users" id="users">Users</a>
           </li>
+        </ul>
+        <ul class="navbar-nav me-auto d-flex">
+          @if( auth()->check() )
           <li class="nav-item">
-            <a class="nav-link" href="/admin/speakers" id="speakers">Speakers</a>
+            <a class="nav-link" href="/" id="users"><strong>Go to website</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/sponsors" id="sponsors">Sponsors</a>
+            <a class="nav-link" href="#">{{ auth()->user()->name }}</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout"><strong>Logout</strong></a>
+          </li>
+          @endif
         </ul>
       </div>
     </div>
@@ -127,10 +141,10 @@
 
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="/public/js/app.js"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
 
   @yield('scripts')
 

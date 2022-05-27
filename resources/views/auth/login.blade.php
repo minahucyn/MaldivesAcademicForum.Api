@@ -2,27 +2,23 @@
 @section('title','Login')
 @section('content')
 
-<form action="#" method="post">
-  <img class="mb-4" src="{{ asset('images/misc/doge.png') }}" alt="" width="auto" height="70">
-  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-  <div class="form-floating">
-    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-    <label for="floatingInput">Email address</label>
-  </div>
-  <div class="form-floating mt-2">
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-    <label for="floatingPassword">Password</label>
+<form method="POST" action="/login">
+  {{ csrf_field() }}
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" name="email">
   </div>
 
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" id="password" name="password">
+    <span class="text-danger">{{ $errors->first('message') }}</span>
   </div>
-  <button class="w-100 btn btn-lg btn-primary mb-5" type="submit">Sign in</button>
-  <a href="/" class="btn-link text-center">Go Back</a>
-  <p class="mt-5 mb-3 text-muted">&copy; Maldives Academic Forum {{ now()->year }}</p>
+
+  <div class="form-group">
+    <a href="/" class="btn btn-secondary">Back</a>
+    <button style="cursor:pointer" type="submit" class="btn btn-primary">Login</button>
+  </div>
 </form>
 
 @endsection

@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Sponsors extends Model
 {
     //
+    public $timestamps = false;
+    protected $primaryKey = 'Id';
 }

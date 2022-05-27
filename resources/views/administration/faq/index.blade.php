@@ -3,24 +3,65 @@
 @section('content')
 
 <div class="container p-4">
-  <h1>FAQ</h1>
-</div>
+  <h1>Frequently Asked Questions</h1>
+  <div class="d-flex justify-content-end">
+    <a href="/admin/faqs/create" class="btn btn-primary">Create</a>
+  </div>
+  <div class="accordion mt-4" id="accordionPanelsStayOpenExample">
+    @forelse ($faqs as $faq)
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-heading{{ $faq->id }}">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ $faq->id }}" aria-expanded="true" aria-controls="panelsStayOpen-collapse{{ $faq->id }}">
+          <strong>{{ $faq->Question }}</strong>
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapse{{ $faq->id }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading{{ $faq->id }}">
+        <div class="accordion-body">
+          <div>
+            {{ $faq->Answer }}
+          </div>
+          <div class="mt-3">
+            <a href="/admin/faqs/edit/{{ $faq->id }}" class="btn btn-warning">Edit</a>
+            <a onclick="deleteFaq('{{ $faq->id }}')" class="btn btn-danger">Delete</a>
 
-@endsection
+            <form action="/admin/faqs/destroy/{{ $faq->id }}" method="POST" id="faq-form-{{ $faq->id }}">
+              {{csrf_field()}}
+              {{method_field('DELETE')}}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    @empty
+    <h4 class="text-center">No FAQs</h4>
+    @endforelse
 
-@section('scripts')
-<script>
-  $(function() {
-    let items = $("#nav > li > a.active")
-    for (let index = 0; index < items.length; index++) {
-      const element = items[index]
-      $(element).removeClass('active')
-      $(element).removeAttr('aria-current')
+  </div>
+
+
+  @endsection
+
+  @section('scripts')
+  <script>
+    $(function() {
+      let items = $("#nav > li > a.active")
+      for (let index = 0; index < items.length; index++) {
+        const element = items[index]
+        $(element).removeClass('active')
+        $(element).removeAttr('aria-current')
+      }
+
+      $("#faq").addClass("active")
+      $("#faq").attr('aria-current', 'page')
+
+    });
+
+    function deleteFaq(id) {
+      let res = confirm('Are you sure you want to delete this FAQ?');
+      if (res) {
+        const target = `#faq-form-${id}`;
+        $(target).submit();
+      }
     }
-
-    $("#faq").addClass("active")
-    $("#faq").attr('aria-current', 'page')
-
-  });
-</script>
-@endsection
+  </script>
+  @endsection

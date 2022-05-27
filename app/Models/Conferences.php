@@ -8,5 +8,5 @@ class Conferences extends Model
 {
     //
     public $timestamps = false;
-
+    protected $primaryKey = 'Id';
 }
